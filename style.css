@@ -97,6 +97,34 @@ div#AD1{
 	border-radius: 5px;
 }
 
+#row1 div h2{
+	font-size: 24px;
+	font-family: "Poppins", sans-serif;
+}
+
+#row1 div form div label{
+	font-size: 15px;
+	font-family: "Poppins", sans-serif;
+}
+#row1 div form div div input{
+	line-height: 50px; 
+	width: 100%; 
+	padding: 0 180px 0 25px; 
+	border: none; 
+	border-radius: 25px; 
+	background-color:#e9ecef;
+}
+
+#row1 div form button {
+	margin: auto;
+	width: 75%;
+	padding: 5px;
+	border-radius: 20px; 
+	border: none; 
+	color: white;
+	background-image: -webkit-linear-gradient(0deg, #3e69fe 0%, #4cd4e3 100%);
+}
+
 #row1 div a {
 	text-decoration: none;
 }

@@ -8,6 +8,7 @@ session_start();
 	<meta name="description" content="Inventario Componentes de PC's">
 	<meta name="keywords" content="HTML, CSS, Inventario, Componentes, PC's">
 	<meta name="author" content="Cristian Aliaga">
+	<!-- <meta http-equiv="refresh" content="25"> -->
 	<title>Inventario Componentes de PC's</title>
 	<link rel="shortcut icon" href="images/pc_icon.png">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -95,6 +96,7 @@ session_start();
 		    <span class="carousel-control-next-icon" style="background-color: grey;"></span>
 		  </a>
 		</div>
+		
 		<nav class="navbar navbar-expand-sm bg-danger navbar-light justify-content-center" id="item1">
 		  <ul class="navbar-nav">
 		  	<li class="nav-item">
