@@ -8,6 +8,4 @@ if(!$conexion){
 
 mysql_select_db("Inventario",$conexion);
 
-
-
 ?>
