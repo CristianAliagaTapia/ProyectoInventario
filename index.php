@@ -33,7 +33,6 @@ session_start();
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
-
 </head>
 <body id="body">
 	<?php
@@ -96,7 +95,7 @@ session_start();
 		    <span class="carousel-control-next-icon" style="background-color: grey;"></span>
 		  </a>
 		</div>
-		
+
 		<nav class="navbar navbar-expand-sm bg-danger navbar-light justify-content-center" id="item1">
 		  <ul class="navbar-nav">
 		  	<li class="nav-item">
@@ -113,6 +112,7 @@ session_start();
 		<div class="col-12 p-1 d-flex flex-row justify-content-center" id = "AD1"> 
 			<img src="images/AD4.jpg">
 		</div>
+
 		<!-- Contenido Ventana -->
 		<div class="row" id="row1">
 			<div class="container col-lg-7 p-4 mb-3 mt-3 bg-white"> 
@@ -147,6 +147,7 @@ session_start();
 				</div>
 			</div>
 		</div>
+
 		<div id="notif">
 			<div class="row align-items-center" >
 				<div class="col-lg-6">

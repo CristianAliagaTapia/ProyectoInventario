@@ -6,97 +6,111 @@ session_start();
 <html lang="en">
 <head>	
 	<meta charset="UTF-8">
-	<meta name="description" content="Inventario PC's">
-	<meta name="keywords" content="HTML, CSS, Inventario, PC's">
+	<meta name="description" content="Inventario Componentes de PC's">
+	<meta name="keywords" content="HTML, CSS, Inventario, Componentes, PC's">
 	<meta name="author" content="Cristian Aliaga">
 	<!-- <meta http-equiv="refresh" content="25"> -->
-	<title>InventariosPC's</title>
+	<title>Inventario Componentes de PC's</title>
 	<link rel="shortcut icon" href="images/pc_icon.png">
-
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
+	<!-- Stylesheet -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+    <!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+
+
+
+	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  	<!-- Estilo para poder visualizar iframe de manera correcta -->
-  	<style type="text/css">
-  		iframe{
-  			height: 1000px;
-  			width: 100%;
-  			border-style: none;
-  		}
-  	</style>
-</head>
-<body>
-	<?php
-	include('conexion.php');
-	?>
 
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+</head>
+<body id="body">
+	<?php
+		include('conexion.php');
+	?>
 	<header >
 		<!-- Barra de navegacion principal -->
-		<nav class="navbar navbar-expand-sm bg-danger navbar-dark sticky-top " >
-		  <!-- Logo -->
-		  <a class="navbar-brand mr-0 mr-md-2" href="index.html">
-		  	<img src="images/home_icon.png" width="36" height="36">
-		  </a>
+		<nav class="navbar navbar-expand-sm navbar-dark" style="text-decoration: none; color: white; background-image: -webkit-linear-gradient(0deg, #3e69fe 0%, #4cd4e3 100%);">
+			<!-- Logo -->
+			<a class="navbar-brand mr-0 mr-md-2" href="index.php" style="border-right: 2px solid white; padding-right: 10px;">
+				<strong> Inventario Componentes de PC's</strong>
+			</a>
+			<!-- Toggler/collapsibe Button -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-		  <!-- Toggler/collapsibe Button -->
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
-
-		  <!-- Links de la barra de navegacion -->
-		  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-		    <ul class="navbar-nav">
-		      	<li class="nav-item">
-		        	<a class="nav-link" href="index.php">Inicio</a>
-		      	</li>
-		      	<li class="nav-item">
-		        	<a class="nav-link" href="#">Intructivo</a>
-		      	</li>
-		      	<li class="nav-item">
-		        	<a class="nav-link" href="indexLogin.php">Ingreso</a>
-		     	</li> 
-		      	<li class="nav-item">
-		        	<a class="nav-link" href="indexSignup.php">Registro</a>
-		     	</li>	     
-		    </ul>
-		  </div> 
+			<!-- Links de la barra de navegacion -->
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav">
+				  	<li class="nav-item">
+				    	<a class="nav-link" href="index.php" style="text-decoration: none; color: white; text-align: center; margin-left: 10px; ">Inicio</a>
+				  	</li>
+				  	<li class="nav-item">
+				    	<a class="nav-link" href="indexLogin.php" style="text-decoration: none; color: white; text-align: center;  margin-left: 10px; ">Ingreso</a>
+				 	</li> 
+				  	<li class="nav-item">
+				    	<a class="nav-link" href="indexSignup.php" style="text-decoration: none; color: white; text-align: center;  margin-left: 10px; ">Registro</a>
+				 	</li>  
+				</ul>
+			</div> 
 		</nav>
 	</header>
 
 
 
 	<main>
-		<div class="col-12 mt-2 mb-2 d-flex flex-row justify-content-center" style="height: 90px; background-color: purple;"> AD </div>
+		<div class="col-12 p-1 d-flex flex-row justify-content-center" id = "AD1"> 
+			<img src="images/AD4.jpg">
+		</div>
 
 		<!-- Contenido Ventana -->
-		<div class="row">
-			<div class="container col-sm-4 shadow p-4 mb-4 bg-white">
-				<h3>Datos Adicionales</h3>
+		<div class="row" id="row1">
+			<div class="container col-lg-6 p-4 mb-3 mt-3 bg-white">
+				<h2>Datos Adicionales</h2>
 				<form name="formRegistro" method="POST" action="registroUsuario2.php">
 					<div class="alert alert-warning"> Rellena los siguientes campos <Strong><?= $_SESSION['Usuario'] ?></Strong> para terminar tu registro. </div>
 					<?= $_SESSION['message'] ?>
 				    <div class="form-group">
 				      <label for="nombre">Nombre:</label>
+				      <div class="input-group">
 				      <input type="text" class="form-control"  name="nombre" id="nombre" placeholder="Ingrese nombre">
+				  </div>
 				    </div>
 				    <div class="form-group">
 				      <label for="primerApellido">Primer Apellido:</label>
+				      <div class="input-group">
 				      <input type="text" class="form-control" name="primerApellido" id="primerApellido" placeholder="Ingrese primer apellido" >
+				  </div>
 				    </div>	
 				    <div class="form-group">
 				      <label for="segundoApellido">Segundo Apellido:</label>
+				      <div class="input-group">
 				      <input type="text" class="form-control" name="segundoApellido" id="segundoApellido" placeholder="Ingrese segundo apellido" >
+				  </div>
 				    </div>		
 				    <div class="form-group">
 				      <label for="celular">Celular:</label>
+				      <div class="input-group">
 				      <input type="text" class="form-control" name="celular" id="celular" placeholder="Ingrese celular" >
+				  </div>
 				    </div>	
 				    <div class="form-group">
 				      <label for="email">E-Mail:</label>
+				      <div class="input-group">
 				      <input type="text" class="form-control" name="email" id="email" placeholder="Ingrese E-Mail" >
+				  </div>
 				    </div>		    
 				    <button type="submit" class="btn btn-danger btn-block">¡Finaliza tu Registro!</button>	
 				    <br>
@@ -104,20 +118,37 @@ session_start();
 				</form>
 			</div>
 		</div>
+
+		<div id="notif">
+			<div class="row align-items-center" >
+				<div class="col-lg-6">
+					<h3>Sigue informado de nuestros productos </h3>
+					<span >
+						Recibe notificaciones de los ultimos productos ingresados
+					</span>
+				</div>
+				<div class="col-lg-6">
+					<form>
+						<input type="text" name="emailContacto" placeholder="Direccion de correo Electronico">
+						<button>Contactanos</button>
+					</form>
+				</div>
+			</div>
+	    </div>
 	</main>
 
-	<footer class="container-fluid mt-3" style="border-top: 1px solid black; padding: 5px;">
-		<div class="row pb-4" style="margin-bottom: 0;">
-			<div class="col-12 col-md-4">
-				<h3 class="page-header" style="border-bottom: 1px solid black; padding: 5px;">Acerca del sitio</h3>
+	<footer>
+		<div class="row pb-4" id="footer">
+			<div class="container col-12 col-md-4">
+				<h3 class="page-header">Acerca del sitio</h3>
 				<p>"Nuestra mision es poder crear un inventario de partes de computadores de manera ordenada"</p>
 				<p> <a class="font-weight-bold" href="#">Terminos y condiciones</a></p>
 			</div>
-			<div class="col-12 col-md-5">
-				<h3 class="page-header" style="border-bottom: 1px solid black; padding: 5px;">Patrocinadores </h3>
+			<div class="container col-12 col-md-5">
+				<h3 class="page-header">Patrocinadores </h3>
 				<div class="row">
 					<div class="col-4 logo-container">
-						<img src="images/CSS_Logo.png" width="100" height="100">
+						<img src="images/CSS1_Logo.png" width="80" height="100">
 					</div>
 					<div class="col-4 logo-container">
 						<img src="images/HTML_Logo.png" width="100" height="100">
@@ -126,13 +157,23 @@ session_start();
 						<img src="images/Bootstrap_Logo.png" width="100" height="100">
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-6 logo-container">
+						<img src="images/PHP_Logo.png" width="150" height="100">
+					</div>
+					<div class="col-6 logo-container">
+						<img src="images/JS_Logo.png" width="100" height="100">
+					</div>
+				</div>
 			</div>
-			<div class="col-12 col-md-3">
-				<h3 class="page-header" style="border-bottom: 1px solid black; padding: 5px;">Contacto</h3>
-				<p>inventario@gmail.com</p>
-				<p>+9 99887766</p>
+			<div class="container col-12 col-md-3">
+				<h3 class="page-header">Contacto</h3>
+				<p>cristian.aliaga.t@gmail.com</p>
+				<p>94415100</p>
 			</div>
-			
+		</div>
+		<div class="container col-12 pb-4" id="copyright">
+			Copyright © 2019  |  All rights reserved to Cristian 
 		</div>
 	</footer>
 </body>

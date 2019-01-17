@@ -87,33 +87,8 @@ $_SESSION['update'] = 0;
 			</div> 
 		</nav>
 
-		<!-- Elemento dinamico de bootstrap, carousel -->
-		<div id="demo" class="carousel slide w-100" data-ride="carousel">
-		  <!-- Indicators -->
-		  <ul class="carousel-indicators" >
-		    <li data-target="#demo" data-slide-to="0" class="active" style="background-color: grey;"></li>
-		    <li data-target="#demo" data-slide-to="1" style="background-color: grey;"></li>
-		    <li data-target="#demo" data-slide-to="2" style="background-color: grey;"></li>
-		  </ul>
-		  <!-- The slideshow -->
-		  <div class="carousel-inner">
-		    <div class="carousel-item active" style="text-align: center; padding: 20px; background-color: white;" >
-		      <img src="images/Hardware_Menu1.png" alt="Harware1"  >
-		    </div>
-		    <div class="carousel-item" style="text-align: center; padding: 20px; background-color: white;">
-		      <img src="images/Hardware_Menu2.png"  alt="Harware2" >
-		    </div>
-		    <div class="carousel-item" style="text-align: center; padding: 20px; background-color: white;">
-		      <img src="images/Hardware_Menu3.png" alt="Harware3">
-		    </div>
-		  </div> 
-		  <!-- Left and right controls -->
-		  <a class="carousel-control-prev" href="#demo" data-slide="prev" >
-		    <span class="carousel-control-prev-icon" style="background-color: grey;"></span>
-		  </a>
-		  <a class="carousel-control-next" href="#demo" data-slide="next">
-		    <span class="carousel-control-next-icon" style="background-color: grey;"></span>
-		  </a>
+		<div class="col-12 p-1 d-flex flex-row justify-content-center" id = "AD1"> 
+			<img src="images/AD4.jpg">
 		</div>
 		
 		<nav class="navbar navbar-expand-sm bg-danger navbar-light justify-content-center" id="item1">
@@ -135,9 +110,7 @@ $_SESSION['update'] = 0;
 	</header>
 
 	<main>
-		<div class="col-12 p-1 d-flex flex-row justify-content-center" id = "AD1"> 
-			<img src="images/AD4.jpg">
-		</div>
+
 
 
 		<!-- Contenido Ventana -->
@@ -164,23 +137,7 @@ $_SESSION['update'] = 0;
 					<button type="submit" class="btn-danger btn-block"> Consultar</button>			
 				</form>
 			</div>
-		</div>
-		<div id="notif">
-			<div class="row align-items-center" >
-				<div class="col-lg-6">
-					<h3>Sigue informado de nuestros productos </h3>
-					<span >
-						Recibe notificaciones de los ultimos productos ingresados
-					</span>
-				</div>
-				<div class="col-lg-6">
-					<form>
-						<input type="text" name="emailContacto" placeholder="Direccion de correo Electronico">
-						<button>Contactanos</button>
-					</form>
-				</div>
-			</div>
-	    </div>	
+		</div>	
 	</main>
 
 	<footer>
