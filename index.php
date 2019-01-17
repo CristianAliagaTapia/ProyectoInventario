@@ -19,6 +19,8 @@ session_start();
     <!-- Font Awesome -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 
+
+
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -28,8 +30,8 @@ session_start();
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 
 </head>
 <body id="body">
@@ -39,7 +41,7 @@ session_start();
 
 	<header>
 		<!-- Barra de navegacion principal -->
-		<nav class="navbar navbar-expand-sm navbar-dark " style="text-decoration: none; color: white; background-image: -webkit-linear-gradient(0deg, #3e69fe 0%, #4cd4e3 100%);">
+		<nav class="navbar navbar-expand-sm navbar-dark" style="text-decoration: none; color: white; background-image: -webkit-linear-gradient(0deg, #3e69fe 0%, #4cd4e3 100%);">
 			<!-- Logo -->
 			<a class="navbar-brand mr-0 mr-md-2" href="index.php" style="border-right: 2px solid white; padding-right: 10px;">
 				<strong> Inventario Componentes de PC's</strong>
@@ -106,73 +108,73 @@ session_start();
 	</header>
 
 	<main>
-		<div class="col-12 p-1 d-flex flex-row justify-content-center" style="height: 100px; background-color: white; "> 
-			<img src="images/AD4.jpg" style="width: 40%">
+		<div class="col-12 p-1 d-flex flex-row justify-content-center" id = "AD1"> 
+			<img src="images/AD4.jpg">
 		</div>
 		<!-- Contenido Ventana -->
 		<div class="row" id="row1">
-			<div class="container col-lg-7 p-4 mb-3 mt-3 bg-white" style="border-radius: 5px; "> 
-				<a href="indexConsultarP.php" style="text-decoration: none;">
-				<div class="container d-flex shadow justify-content-center p-4 mb-4" style="background-color: white; border: 1px solid #999; border-radius: 5px;">
-					<h3 style="color:  -webkit-linear-gradient(0deg, #3e69fe 0%, #4cd4e3 100%); ">Consultar productos</h3>
-				</div>
+			<div class="container col-lg-7 p-4 mb-3 mt-3 bg-white"> 
+				<a href="indexConsultarP.php" >
+					<div class="container d-flex shadow justify-content-center p-4 mb-4">
+						<h3>Consultar productos</h3>
+					</div>
 				</a>									
 			</div>
-			<div class="container col-lg-3 p-4 mb-4 mt-4 bg-white" style="border-radius: 5px;"> 
+			<div class="container col-lg-3 p-4 mb-4 mt-4 bg-white"> 
 				<div class="container p-4 mb-4 bg-white">
 						<div class="container d-flex justify-content-center">
 							<h6>Siguenos en:</h6>
 						</div>
 					
-						<div class="row">
+						<div class="row" id="row2">
 							<div class="container col-4">
-								<a href="https://www.facebook.com/" style="text-decoration: none;"><i class="fab fa-facebook" style="font-size:30px; color:blue;"></i></a>
+								<a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
 							</div>
 							<div class="container col-4" >
-								<a href="https://twitter.com" style="text-decoration: none;"><i class="fab fa-twitter" style="font-size:30px; color:cyan;"></i></a>		
+								<a href="https://twitter.com"><i class="fab fa-twitter"></i></a>		
 							</div>
 							<div class="container col-4" >
-								<a href="https://www.youtube.com" style="text-decoration: none;"><i class="fab fa-youtube" style="font-size:30px; color:red;"></i></a>	
+								<a href="https://www.youtube.com" ><i class="fab fa-youtube" ></i></a>	
 							</div>							
 						</div>				
 				</div>				
-				<div class="container p-0 bg-white ">
-					<div class="container p-0" style="background-color: red;">
-						<img src="images/AD1.jpg" style="height: 100%; width: 100%;">
+				<div class="container p-0" id="AD2">
+					<div class="container p-0">
+						<img src="images/AD1.jpg">
 					</div>
 				</div>
 			</div>
 		</div>
-		<div style="background-color: #f9f9ff; padding-top: 100px; padding-bottom: 100px;">
-			<div class="row align-items-center"style="padding-right: 15px; padding-left: 15px;">
-					<div class="col-lg-6" style="margin-bottom: 10px;" >
-					<h3 style="font-size: 24px; ">Sigue informado de nuestros productos </h3>
-					<span style="font-size: 15px; color: #777777; ">
+		<div id="notif">
+			<div class="row align-items-center" >
+				<div class="col-lg-6">
+					<h3>Sigue informado de nuestros productos </h3>
+					<span >
 						Recibe notificaciones de los ultimos productos ingresados
 					</span>
-					</div>
-					<div class="col-lg-6">
-						<form style="position: relative;">
-							<input type="text" name="emailContacto" placeholder="Direccion de correo Electronico" style="line-height: 50px; width: 100%; padding: 0 180px 0 25px; border: none; border-radius: 25px; box-shadow: 0px 15px 50px 0px rgba(0,0,0,0.1);">
-							<button style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px; line-height: 40px; padding: 0 30px; border-radius: 20px; border: none; color: white;background-image: -webkit-linear-gradient(0deg, #3e69fe 0%, #4cd4e3 100%);">Contactanos</button>
-						</form>
-						</div>
+				</div>
+				<div class="col-lg-6">
+					<form>
+						<input type="text" name="emailContacto" placeholder="Direccion de correo Electronico">
+						<button>Contactanos</button>
+					</form>
+				</div>
 			</div>
 	    </div>
 	</main>
 
 	<footer>
-		<div class="row pb-4">
+		<div class="row pb-4" id="footer">
 			<div class="container col-12 col-md-4">
-				<h3 class="page-header" style="text-align: center; padding: 5px;">Acerca del sitio</h3>
-				<p style="text-align: center;">"Nuestra mision es poder crear un inventario de partes de computadores de manera ordenada"</p>
-				<p style="text-align: center;"> <a class="font-weight-bold" href="#" style="text-align: center;">Terminos y condiciones</a></p>
+				<h3 class="page-header">Acerca del sitio</h3>
+				<p>"Nuestra mision es poder crear un inventario de partes de computadores de manera ordenada"</p>
+				<p> <a class="font-weight-bold" href="#">Terminos y condiciones</a></p>
 			</div>
 			<div class="container col-12 col-md-5">
-				<h3 class="page-header" style="text-align: center; padding: 5px;">Patrocinadores </h3>
+				<h3 class="page-header">Patrocinadores </h3>
 				<div class="row">
 					<div class="col-4 logo-container">
-						<img src="images/CSS_Logo.png" width="100" height="100">
+						<img src="images/CSS1_Logo.png" width="80" height="100">
 					</div>
 					<div class="col-4 logo-container">
 						<img src="images/HTML_Logo.png" width="100" height="100">
@@ -181,11 +183,19 @@ session_start();
 						<img src="images/Bootstrap_Logo.png" width="100" height="100">
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-6 logo-container">
+						<img src="images/PHP_Logo.png" width="150" height="100">
+					</div>
+					<div class="col-6 logo-container">
+						<img src="images/JS_Logo.png" width="100" height="100">
+					</div>
+				</div>
 			</div>
 			<div class="container col-12 col-md-3">
-				<h3 class="page-header" style="text-align: center;; padding: 5px;">Contacto</h3>
-				<p style="text-align: center;">cristian.aliaga.t@gmail.com</p>
-				<p style="text-align: center;">94415100</p>
+				<h3 class="page-header">Contacto</h3>
+				<p>cristian.aliaga.t@gmail.com</p>
+				<p>94415100</p>
 			</div>
 		</div>
 		<div class="container col-12 pb-4" id="copyright">
@@ -195,6 +205,3 @@ session_start();
 
 </body>
 </html>
-
-
-<!-- Imagen CSS;  -->
