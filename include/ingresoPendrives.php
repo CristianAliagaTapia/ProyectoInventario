@@ -1,13 +1,18 @@
+	<br>
 	<div id="entradaPendrive">
-      <h3>Pendrive</h3>
+      <h2>Pendrive</h2>
 	  <form name ="formPendrive" method ="POST" action="ingreso.php">
 	    <div class="form-group">
 	      <label for="nombre">Nombre:</label>
+	      <div class="input-group">
 	      <input type="text" class="form-control" name="nombre" id="nombrePendrive" placeholder="Ingreso nombre pendrive" >
+	  </div>
 	    </div>
 	    <div class="form-group">
 	      <label for="codigo">Codigo:</label>
+	      <div class="input-group">
 	      <input type="number" class="form-control" name="codigo" id="codigoPendrive" placeholder="Ingreso codigo pendrive" >
+	  </div>
 	    </div>
 
 	    <div class="form-group">

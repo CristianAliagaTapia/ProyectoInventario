@@ -103,65 +103,29 @@ session_start();
 			  <!-- Panel de pestañas -->
 			  <ul class="nav nav-pills" role="tablist">
 			    <li class="nav-item">
-			      <a class="nav-link" data-toggle="pill" href="#procesadores">Procesadores</a>
+			      <a id = "L_Procesadores"class="nav-link" data-toggle="pill" href="#procesadores"><img src="images/P_Icon.jpg" width="100px" height="100px"><br>Procesadores</a>
 			    </li>
 			    <li class="nav-item">
-			      <a class="nav-link" data-toggle="pill" href="#placasMadre">Placas Madre</a>
+			      <a id = "L_PlacasMadre"class="nav-link" data-toggle="pill" href="#placasMadre" ><img src="images/MB_Icon.jpg" width="100px" height="100px"><br>Placas Madre</a>
 			    </li>
 			    <li class="nav-item">
-			      <a class="nav-link" data-toggle="pill" href="#memorias">Memorias</a>
+			      <a id="L_Memorias"class="nav-link" data-toggle="pill" href="#memorias"><img src="images/M_Icon.jpg" width="100px" height="100px"><br>Memorias</a>
 			    </li>
 			    <li class="nav-item">
-			      <a class="nav-link" data-toggle="pill" href="#pendrives">Pendrives</a>
+			      <a id ="L_Pendrives"class="nav-link" data-toggle="pill" href="#pendrives"><img src="images/PD_Icon.jpg" width="100px" height="100px"><br>Pendrives</a>
 			    </li>
 			    <li class="nav-item">
-			      <a class="nav-link" data-toggle="pill" href="#tarjetasGraficas">Tarjetas Graficas</a>
+			      <a id="L_TarjetasGraficas" class="nav-link" data-toggle="pill" href="#tarjetasGraficas"><img src="images/TG_Icon.jpg" width="100px" height="100px"><br>Tarjetas Graficas</a>
 			    </li>
 			    <li class="nav-item">
-			      <a class="nav-link" data-toggle="pill" href="#discosDuros">Discos Duros</a>
+			      <a id="L_DiscosDuros" class="nav-link" data-toggle="pill" href="#discosDuros"><img src="images/DD_Icon.jpg" width="100px" height="100px"><br>Discos Duros</a>
 			    </li>	    	    
 			  </ul>
 
 			  <!-- Distintas pestañas -->
 			  <!-- Estas pueden llevar a distintos links en otras paginas que conteneran partes de la pagina -->
-			  <div class="tab-content">
+			  <div class="tab-content" id="L_Contenido">
 
-			    <div id="procesadores" class="container tab-pane fade"><br>
-			      <?php 
-			      include('include/ingresoProcesadores.php'); 
-			      ?>			    
-			    </div>
-
-			    <div id="placasMadre" class="container tab-pane fade"><br>
-			      <?php 
-			      include('include/ingresoPlacas.php'); 
-			      ?>			    			      
-			    </div>
-
-			    <div id="memorias" class="container tab-pane fade"><br>
-			      <?php 
-			      include('include/ingresoMemorias.php'); 
-			      ?>			  
-			    </div>
-
-			    <div id="pendrives" class="container tab-pane fade"><br>
-			      <?php 
-			      include('include/ingresoPendrives.php'); 
-			      ?>			      	      
-			    </div>
-
-			    <div id="tarjetasGraficas" class="container tab-pane fade"><br>
-			      <?php 
-			      include('include/ingresoTarjetas.php'); 
-			      ?>
-			    </div>
-
-			    <div id="discosDuros" class="container tab-pane fade"><br>
-			      <?php 
-			      include('include/ingresoDiscos.php'); 
-			      ?>
-			      <!-- <iframe src="ingresoDiscos.php"></iframe> iframe es usado tambien-->
-			    </div>
 			  </div>
 
 			</div>
@@ -207,6 +171,26 @@ session_start();
 			Copyright © 2019  |  All rights reserved to Cristian 
 		</div>
 	</footer>
+<script type="text/javascript">
+	$("#L_Procesadores").on("click",function(){
+		$("#L_Contenido").load("include/ingresoProcesadores.php");
+	});
+	$("#L_PlacasMadre").on("click",function(){
+		$("#L_Contenido").load("include/ingresoPlacas.php");
+	});
+	$("#L_Memorias").on("click",function(){
+		$("#L_Contenido").load("include/ingresoMemorias.php");
+	});
+	$("#L_Pendrives").on("click",function(){
+		$("#L_Contenido").load("include/ingresoPendrives.php");
+	});
+	$("#L_TarjetasGraficas").on("click",function(){
+		$("#L_Contenido").load("include/ingresoTarjetas.php");
+	});
+	$("#L_DiscosDuros").on("click",function(){
+		$("#L_Contenido").load("include/ingresoDiscos.php");
+	});
+</script>
 <?= $_SESSION['mensaje_error'] = ''?>
 </body>
 </html>

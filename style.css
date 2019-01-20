@@ -101,9 +101,7 @@ div#AD1{
 	font-size: 24px;
 	font-family: "Poppins", sans-serif;
 }
-
-#row1 div form div label{
-	font-size: 15px;
+#row1 div form div label {
 	font-family: "Poppins", sans-serif;
 }
 #row1 div form div div input{
@@ -113,6 +111,32 @@ div#AD1{
 	border: none; 
 	border-radius: 25px; 
 	background-color:#e9ecef;
+}
+
+#row1 div form div select{
+	line-height: 50px; 
+	width: 100%; 
+	padding: 0 180px 0 25px; 
+	border: none; 
+	border-radius: 25px; 
+	background-color:#e9ecef;
+}
+#row1 div form div textarea{
+	line-height: 25px; 
+	width: 100%; 
+	padding: 0 180px 0 25px; 
+	border: none; 
+	border-radius: 25px; 
+	background-color:#e9ecef;
+}
+#row1 div form div select option{
+	line-height: 28px; 
+	font-size: 15px;
+	width: 100%; 
+	padding: 0 50px 0 25px; 
+	border: none; 
+	border-radius: 25px; 
+	background-color:#fff;
 }
 
 #row1 div form button {

@@ -1,27 +1,28 @@
+	<br>
 	<div id="entradaProcesador">
-      <h3>Procesador</h3>			  
+      <h2>Procesador</h2>			  
 	  <form name="formProcesador" method ="POST" action="ingreso.php">
 	    <div class="form-group">
 	      <label for="nombre">Nombre:</label>
+	      <div class="input-group">
 	      <input type="text" class="form-control" id="nombreProcesador" placeholder="Ingreso nombre procesador" name="nombre">
+	  </div>
 	    </div>
 	    <div class="form-group">
 	      <label for="codigo">Codigo:</label>
+	      <div class="input-group">
 	      <input type="text" class="form-control" id="codigoProcesador" placeholder="Ingreso codigo procesador" name="codigo">
+	  </div>
 	    </div>
 	    <div class="form-group">
 	      <label for="marca">Marca:</label>
 	      <br>
-		    <div class="form-check-inline">
-		      <label class="form-check-label" for="marca1">
-		        <input type="radio" class="form-check-input" id="marcaProcesador1" name="marca" value="Intel">Intel
+     	      <label class="form-check-label" for="marca1" style="margin-left: 30px">
+		        <input type="radio" class="form-check-input" id="marcaProcesador1" name="marca" value="Intel" style="margin-left: -20px">Intel
 		      </label>
-		    </div>
-		    <div class="form-check-inline">
-		      <label class="form-check-label" for="marca2">
-		        <input type="radio" class="form-check-input" id="marcaProcesador2" name="marca" value="AMD">AMD
+		      <label class="form-check-label" for="marca2" style="margin-left: 30px">
+		        <input type="radio" class="form-check-input" id="marcaProcesador2" name="marca" value="AMD" style="margin-left: -20px">AMD
 		      </label>
-		    </div>
 	    </div>		    
 	    <div class="form-group">
 	      <label for="cores">Cores:</label>

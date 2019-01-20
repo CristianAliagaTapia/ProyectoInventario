@@ -1,13 +1,18 @@
+	<br>
 	<div id="entradaDiscos">
-      <h3>Discos Duros</h3>			  
+      <h2>Discos Duros</h2>			  
 	  <form name="formDisco" method ="POST" action="ingreso.php">
 	    <div class="form-group">
 	      <label for="nombre">Nombre:</label>
-	      <input type="text" class="form-control" name="nombre" id="nombreDisco" placeholder="Ingreso nombre" >
+	     	<div class="input-group">
+	      		<input type="text" class="form-control" name="nombre" id="nombreDisco" placeholder="Ingreso nombre" >
+	  		</div>
 	    </div>
 	    <div class="form-group">
 	      <label for="codigo">Codigo:</label>
-	      <input type="text" class="form-control" name="codigo" id="codigoDisco" placeholder="Ingreso codigo" >
+	      <div class="input-group">
+	      	<input type="text" class="form-control" name="codigo" id="codigoDisco" placeholder="Ingreso codigo" >
+	      </div>
 	    </div>
 	    <div class="form-group">
 	      <label for="marca">Marca:</label>
@@ -59,7 +64,7 @@
 		</div>		   
 		<div class="form-group">
 			<label for="imagenDisco">Imagen: </label>
-			<input type="file" name="myfile" class="form-control-file border">
+				<input type="file" name="myfile" class="form-control-file border">
 		</div>  
 		<input type="hidden" name="tipo" value="6"> 
 	    <br>

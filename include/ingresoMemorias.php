@@ -1,13 +1,18 @@
+	<br>
 	<div id="entradaMemoria">
-      <h3>Memoria</h3>			  
+      <h2>Memoria</h2>			  
 	  <form name="formMemoria" method ="POST" action="ingreso.php">
 	    <div class="form-group">
 	      <label for="nombre">Nombre:</label>
+	      <div class="input-group">
 	      <input type="text" class="form-control" name="nombre"id="nombreMemoria" placeholder="Ingreso nombre memoria" >
+	  </div>
 	    </div>
 	    <div class="form-group">
 	      <label for="codigoMemoria">Codigo:</label>
+	      <div class="input-group">
 	      <input type="text" class="form-control" name="codigo" id="codigoMemoria" placeholder="Ingreso codigo memoria" >
+	  </div>
 	    </div>
 	    <div class="form-group">
 	      <label for="marca">Marca:</label>
