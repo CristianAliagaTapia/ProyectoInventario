@@ -1,7 +1,7 @@
 	<br>
 	<div id="entradaTarjetasG">
       <h2>Tarjetas graficas</h2>			  
-	  <form name="formMemoria" method ="POST" action="ingreso.php">
+	  <form name="formProcesador" id="formProducto"  onsubmit="return agregarProducto()">
 	    <div class="form-group">
 	      <label for="nombre">Nombre:</label>
 	      <div class="input-group">
@@ -49,7 +49,7 @@
 		</div>		   
 		<div class="form-group">
 			<label for="imagenTarjeta">Imagen: </label>
-			<input type="file" name="myfile" class="form-control-file border">
+			<input type="file" name="myfile" id="myfile" class="form-control-file border">
 		</div> 
 		<input type="hidden" name="tipo" value="5">  
 	    <br>

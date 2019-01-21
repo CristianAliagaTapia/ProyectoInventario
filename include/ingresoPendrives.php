@@ -1,7 +1,7 @@
 	<br>
 	<div id="entradaPendrive">
       <h2>Pendrive</h2>
-	  <form name ="formPendrive" method ="POST" action="ingreso.php">
+	  <form name="formProcesador" id="formProducto"  onsubmit="return agregarProducto()">
 	    <div class="form-group">
 	      <label for="nombre">Nombre:</label>
 	      <div class="input-group">
@@ -55,7 +55,7 @@
 		</div>
 		<div class="form-group">
 			<label for="imagen">Imagen: </label>
-			<input type="file" name="myfile" class="form-control-file border">
+			<input type="file" name="myfile" id="myfile" class="form-control-file border">
 		</div> 
 		<input type="hidden" name="tipo" value="4"> 							     
 	    <br>

@@ -1,7 +1,9 @@
 	<br>
 	<div id="entradaDiscos">
       <h2>Discos Duros</h2>			  
-	  <form name="formDisco" method ="POST" action="ingreso.php">
+	  <form name="formDisco" id="formProducto"  onsubmit="return agregarProducto()">
+	    <div class="alert alert-danger display-error" style="display: none">
+	    </div>
 	    <div class="form-group">
 	      <label for="nombre">Nombre:</label>
 	     	<div class="input-group">
@@ -64,7 +66,7 @@
 		</div>		   
 		<div class="form-group">
 			<label for="imagenDisco">Imagen: </label>
-				<input type="file" name="myfile" class="form-control-file border">
+				<input type="file" name="myfile" id ="myfile" class="form-control-file border">
 		</div>  
 		<input type="hidden" name="tipo" value="6"> 
 	    <br>

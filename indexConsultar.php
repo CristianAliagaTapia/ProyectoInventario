@@ -123,7 +123,8 @@ $_SESSION['update'] = 0;
 
 			<div class="container col-lg-8 p-4 mb-3 mt-3 bg-white">
 				<h2>Consultar Productos</h2>
-				<?= $_SESSION['mensaje_error3'] ?>		
+				<?= $_SESSION['mensaje_error3'] ?>	
+				<div name="alertaVacio" class="alert alert-danger" style="display: none;"> El campo del nombre se encuentra vacio, por favor rellenelo. </div>	
 				<div class="alert alert-warning">
 					<strong>Atencion!</strong> Debe de proveer un nombre para iniciar una busqueda.
 				</div>		
@@ -179,6 +180,38 @@ $_SESSION['update'] = 0;
 			Copyright © 2019  |  All rights reserved to Cristian 
 		</div>
 	</footer>
+<script type="text/javascript">
+	$.ajax({
+   url : 'search.php', // your php file
+   type : 'GET', // type of the HTTP request
+   success : function(data){
+      var obj = jQuery.parseJSON(data);
+      console.log(obj);
+   }
+	});
+	(function(){
+
+	var formulario = document.getElementsByName("formC")[0];
+	var alertaVacio = document.getElementsByName("alertaVacio")[0];
+
+		var validarNombre = function(e){
+
+				if (formulario.producto.value==0) {
+					alertaVacio.style.display = "block";
+					e.preventDefault();
+				} 
+		}
+
+		var validar = function(e){
+
+		validarNombre(e);
+
+		};
+
+	formulario.addEventListener ("submit", validar);
+
+}())
+</script>
 <?
 unset($_SESSION['mensaje_error3']);
 ?>

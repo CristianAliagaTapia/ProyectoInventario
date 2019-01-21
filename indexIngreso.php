@@ -98,7 +98,9 @@ session_start();
 			<br>
 			<div class="container col-lg-10 p-4 mb-3 mt-3 bg-white">
 			  <h2>Ingreso de productos</h2>
-			  <?= $_SESSION['mensaje_error'] ?>
+			 <div class="alert alert-danger" id="Alerta1" style="display: none;"> No se ha efectuado el registro, debido a que hay campos vacios, por favor completelos. </div>
+			 <div class="alert alert-danger" id="Alerta2" style="display: none;"> El codigo corresponde a otro producto, porfavor reintente con un codigo distinto. </div>
+			 <div class="alert alert-success" id="Alerta3" style="display: none;"> Exito, producto registrado. </div>
 			  <!-- Pestañas de productos -->
 			  <!-- Panel de pestañas -->
 			  <ul class="nav nav-pills" role="tablist">
@@ -124,7 +126,7 @@ session_start();
 
 			  <!-- Distintas pestañas -->
 			  <!-- Estas pueden llevar a distintos links en otras paginas que conteneran partes de la pagina -->
-			  <div class="tab-content" id="L_Contenido">
+			  <div class="tab-content" id="L_Contenido" style="display: block;">
 
 			  </div>
 
@@ -173,24 +175,97 @@ session_start();
 	</footer>
 <script type="text/javascript">
 	$("#L_Procesadores").on("click",function(){
+				$("#Alerta1").css("display","none");
+				$("#Alerta2").css("display","none");
+				$("#Alerta3").css("display","none");	
 		$("#L_Contenido").load("include/ingresoProcesadores.php");
 	});
 	$("#L_PlacasMadre").on("click",function(){
+				$("#Alerta1").css("display","none");
+				$("#Alerta2").css("display","none");
+				$("#Alerta3").css("display","none");	
 		$("#L_Contenido").load("include/ingresoPlacas.php");
 	});
 	$("#L_Memorias").on("click",function(){
+				$("#Alerta1").css("display","none");
+				$("#Alerta2").css("display","none");
+				$("#Alerta3").css("display","none");	
 		$("#L_Contenido").load("include/ingresoMemorias.php");
 	});
 	$("#L_Pendrives").on("click",function(){
+				$("#Alerta1").css("display","none");
+				$("#Alerta2").css("display","none");
+				$("#Alerta3").css("display","none");	
 		$("#L_Contenido").load("include/ingresoPendrives.php");
 	});
 	$("#L_TarjetasGraficas").on("click",function(){
+				$("#Alerta1").css("display","none");
+				$("#Alerta2").css("display","none");
+				$("#Alerta3").css("display","none");	
 		$("#L_Contenido").load("include/ingresoTarjetas.php");
 	});
 	$("#L_DiscosDuros").on("click",function(){
+				$("#Alerta1").css("display","none");
+				$("#Alerta2").css("display","none");
+				$("#Alerta3").css("display","none");	
 		$("#L_Contenido").load("include/ingresoDiscos.php");
 	});
+
+
+
+function agregarProducto(){
+	alert("Funcion agregar cliente")
+	//document.getElementById("n_rut").disabled = false;
+	var x = document.getElementById('myfile').files[0].name;
+	//var x = document.getElementById('myfile').value;
+	console.log(x);
+	var url= 'ingreso_php.php';
+
+	var $form = $('#formProducto');
+	var data = {
+	  'myfile' : x
+	};
+
+	data = $form.serialize() + '&' + $.param(data);
+	console.log(data);
+	$.ajax({
+		type:'POST',
+		url:url,
+		data: data,
+		dataType: "json",
+		
+		success:function(data){
+			console.log(data);
+			if(data.code == 1){
+				$("#Alerta1").css("display","none");
+				$("#Alerta2").css("display","none");
+				$("#Alerta3").css("display","none");				
+				alert(data.msg);
+				$("#Alerta1").css("display","block");
+			}else if(data.code == 2){
+				$("#Alerta1").css("display","none");
+				$("#Alerta2").css("display","none");
+				$("#Alerta3").css("display","none");				
+				alert(data.msg);
+				$("#Alerta2").css("display","block");
+			}else if(data.code == 3){
+				$("#Alerta1").css("display","none");
+				$("#Alerta2").css("display","none");
+				$("#Alerta3").css("display","none");
+				alert(data.msg);
+				$("#Alerta3").css("display","block");	
+				$("#L_Contenido").empty();			
+			}else{
+				alert("UHHHH");
+			}
+	
+		}
+	});
+return false;
+
+};
+
+
 </script>
-<?= $_SESSION['mensaje_error'] = ''?>
 </body>
 </html>
