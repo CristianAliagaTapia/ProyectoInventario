@@ -208,12 +208,12 @@ $_SESSION['verif'] = 1;
 					</div>
 					<input type="hidden" name="tipo" value="1">   
 				    <br>
-				    <button type="submit" class="btn btn-danger btn-block">Registrar</button>
+				    <button type="submit" class="btn btn-danger btn-block">Modificar</button>
 				  </form>
 				</div>			
 				<div id="entradaPlaca" style="display: none;">
 			      <h2>Placa Madre</h2>			  
-				  <form name="formProcesador" id="formProducto" onsubmit="return agregarProducto()">
+				  <form name="formProcesador" id="formProducto" onsubmit="return modificarProducto()">
 				    <div class="form-group">
 				      <label for="nombre">Nombre:</label>
 				      <div class="input-group">
@@ -288,12 +288,12 @@ $_SESSION['verif'] = 1;
 					</div>  
 					<input type="hidden" name="tipo" value="2"> 
 				    <br>
-				    <button type="submit" class="btn btn-danger btn-block">Registrar</button>
+				    <button type="submit" class="btn btn-danger btn-block">Modificar</button>
 				  </form>
 				</div>
 				<div id="entradaMemoria" style="display: none;">
 			      <h2>Memoria</h2>			  
-				  <form name="formProcesador" id="formProducto"  onsubmit="return agregarProducto()">
+				  <form name="formProcesador" id="formProducto"  onsubmit="return modificarProducto()">
 				    <div class="form-group">
 				      <label for="nombre">Nombre:</label>
 				      <div class="input-group">
@@ -352,12 +352,12 @@ $_SESSION['verif'] = 1;
 					</div>  
 					<input type="hidden" name="tipo" value="3"> 
 				    <br>
-				    <button type="submit" class="btn btn-danger btn-block">Registrar</button>
+				    <button type="submit" class="btn btn-danger btn-block">Modificar</button>
 				  </form>
 				</div>
 				<div id="entradaPendrive" style="display: none;">
 			      <h2>Pendrive</h2>
-				  <form name="formProcesador" id="formProducto"   onsubmit="return agregarProducto()">
+				  <form name="formProcesador" id="formProducto"   onsubmit="return modificarProducto()">
 				    <div class="form-group">
 				      <label for="nombre">Nombre:</label>
 				      <div class="input-group">
@@ -415,12 +415,12 @@ $_SESSION['verif'] = 1;
 					</div> 
 					<input type="hidden" name="tipo" value="4"> 							     
 				    <br>
-				    <button type="submit" class="btn btn-danger btn-block">Registrar</button>
+				    <button type="submit" class="btn btn-danger btn-block">Modificar</button>
 				  </form>
 				</div>
 				<div id="entradaTarjetasG" style="display: none;">
 			      <h2>Tarjeta grafica</h2>			  
-				  <form name="formProcesador" id="formProducto"  onsubmit="return agregarProducto()">
+				  <form name="formProcesador" id="formProducto"  onsubmit="return modificarProducto()">
 				    <div class="form-group">
 				      <label for="nombre">Nombre:</label>
 				      <div class="input-group">
@@ -472,12 +472,12 @@ $_SESSION['verif'] = 1;
 					</div> 
 					<input type="hidden" name="tipo" value="5">  
 				    <br>
-				    <button type="submit" class="btn btn-danger btn-block">Registrar</button>
+				    <button type="submit" class="btn btn-danger btn-block">Modificar</button>
 				  </form>
 				</div>
 				<div id="entradaDiscos" style="display: none;">
 			      <h2>Disco Duro</h2>			  
-				  <form name="formDisco" id="formProducto"   onsubmit="return agregarProducto()">
+				  <form name="formDisco" id="formProducto"   onsubmit="return modificarProducto()">
 				    <div class="alert alert-danger display-error" style="display: none">
 				    </div>
 				    <div class="form-group">
@@ -546,7 +546,7 @@ $_SESSION['verif'] = 1;
 					</div>  
 					<input type="hidden" name="tipo" value="6"> 
 				    <br>
-				    <button type="submit" class="btn btn-danger btn-block">Registrar</button>
+				    <button type="submit" class="btn btn-danger btn-block">Modificar</button>
 				  </form>
 				</div>
 				<br>
@@ -656,7 +656,7 @@ $_SESSION['verif'] = 1;
 							$("#entradaPlaca").css("display", "block");
 							$('#inputformNombrePlaca').val(data.nombre);
 							$('#inputformCodigoPlaca').val(data.codigo);
-							$('#inputformCodigoPlaca').prop("disabled", true);
+							$('#inputformCodigoPlaca').prop("disabled", false);
 							$('#inputformCantidadPlaca').val(data.cantidad);	
 							$('#inputformDescripcionPlaca').val(data.descripcion);	
 							document.getElementById('inputformMarcaPlaca').innerHTML=data.marca;
