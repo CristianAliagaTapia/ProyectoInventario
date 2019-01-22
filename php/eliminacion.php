@@ -12,7 +12,7 @@ function eliminar($codigoo){
 	mysql_query($eliminar);
 }
 
-//eliminar($codigo);
+eliminar($codigo);
 $errorMSG = 'Exito, producto eliminado.';
 echo json_encode(['code'=>4, 'msg'=>$errorMSG]);
 

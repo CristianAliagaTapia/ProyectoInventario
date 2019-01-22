@@ -147,7 +147,7 @@ if (empty($nombre) or empty($codigo) or empty($marca) or empty($cantidad) or emp
 			 	if(comprobar($codigo) == 0){
 			 		mysql_query($addItem);
 					$errorMSG = 'Exito, producto registrado';
-					$victoryMSG = 'Nombre:'.$nombre.', Codigo:'.$codigo.', Marca:'.$marca.', Cantidad:'.$cantidad.', Descripcion:'.$descripcion;
+					
 					echo json_encode(['code'=>3, 'msg'=>$errorMSG]);	
 			 	}else{
 					$errorMSG = 'El codigo corresponde a otro producto, porfavor reintente con un codigo distinto.';
@@ -160,13 +160,3 @@ if (empty($nombre) or empty($codigo) or empty($marca) or empty($cantidad) or emp
 			break;
 	}
 }
-/*if(empty($errorMSG)){
-	$msg = "Name: ".$name.", Email: ".$email.", Subject: ".$msg_subject.", Message:".$message;
-	echo json_encode (['code'=>200, 'msg'=>$msg]);
-	exit;
-}
-
-echo json_encode(['code'=>404, 'msg'=>$errorMSG]);
-?>
-
-$errorMSG = '<li> NAAAAAA <li>';*/

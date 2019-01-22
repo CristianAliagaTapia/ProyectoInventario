@@ -39,7 +39,6 @@ if(empty($codigo)){
 		$errorMSG = 'El codigo del producto que desea eliminar no se encuentra en la base de datos.';
 		echo json_encode(['code'=>2, 'msg'=>$errorMSG]);
 	}else{
-		//eliminar($codigo);
 		$producto = "SELECT * FROM productos WHERE codigo = '$codigo'";
 		$prod = mysql_query($producto);
 		while ($dato = mysql_fetch_array($prod)) {

@@ -94,16 +94,17 @@ session_start();
 			<div class="container col-lg-12 p-0">
 				<div class="alert alert-success text-center" > <strong><?= $_SESSION['Usuario'] ?></strong>, En este menu podras eliminar productos. </div>
 			</div>
-			<div class="container col-lg-8 p-4 mb-3 mt-3 bg-white" id = "contElim1">
+			<div class="container col-lg-8 p-4 mb-3 mt-3 bg-white" id = "contElim1" >
 			  <h2>Eliminacion de producto</h2>
 			 <div class="alert alert-danger" id="Alerta1" style="display: none;"> El campo de codigo se encuentra vacio, por favor rellenelo. </div>
 			 <div class="alert alert-danger" id="Alerta2" style="display: none;"> El codigo del producto que desea eliminar no se encuentra en la base de datos. </div>
 			 <div class="alert alert-success" id="Alerta3" style="display: none;"> Exito, producto encontrado. </div>
 			 <div class="alert alert-success" id="Alerta4" style="display: none;"> Exito, producto eliminado. </div>
-		      <div class="alert alert-warning" style="display: block;" id="alertaAtencion">
+			  
+			  <form name="formEL" id="formEliminar1" onsubmit="return eliminarProducto1()" style="display: block;">
+		        <div class="alert alert-warning" style="display: block;" id="alertaAtencion">
 			  	<strong>Atencion!</strong> Debe de proveer un codigo para iniciar una busqueda.
-				</div>				  
-			  <form name="formEL" id="formEliminar1" onsubmit="return eliminarProducto1()">
+				</div>				  	
 			    <div class="form-group">
 			      <label for="codigo">Codigo:</label>
 			      <div class="input-group">
@@ -115,9 +116,9 @@ session_start();
 			  </form>	
 
 			</div>
-			<div class="container col-lg-8 p-4 mb-3 mt-3 bg-white" id = "contElim2" style="display: none" onsubmit="return eliminarProducto2()">
+			<div class="container col-lg-8 p-4 mb-3 mt-3 bg-white" id = "contElim2" style="display: none" >
 				<h2>Producto a eliminar</h2>
-				<form name="formEL2" id="formEliminar2">
+				<form name="formEL2" id="formEliminar2" onsubmit="return eliminarProducto2()">
 					<div class="form-group">
 						<label for="tipo">Tipo: </label>
 						<div class="input-group">
@@ -192,7 +193,6 @@ session_start();
 	</footer>
 <script type="text/javascript">
 	var mensaje= function(){
-		console.log('veremos');
 		$("#alertaAtencion").css("display","none");
 	}
 	var alert0 = document.getElementById("alertaAtencion");
@@ -200,7 +200,7 @@ session_start();
 
 	function eliminarProducto1(){
 		alert('Buscando Producto');
-		var url= 'eliminacion_php.php';
+		var url= 'php/busqueda_elim.php';
 		var data;
 		data = $('#formEliminar1').serialize();
 		console.log(data);
@@ -214,24 +214,37 @@ session_start();
 				if(data.code == 1){
 					$("#Alerta1").css("display","none");
 					$("#Alerta2").css("display","none");
-					$("#Alerta3").css("display","none");							
+					$("#Alerta3").css("display","none");
+					$("#Alerta4").css("display","none");						
 					alert(data.msg);
 					$("#Alerta1").css("display","block");
 				}else if(data.code == 2){
 					$("#Alerta1").css("display","none");
 					$("#Alerta2").css("display","none");
-					$("#Alerta3").css("display","none");							
+					$("#Alerta3").css("display","none");
+					$("#Alerta4").css("display","none");							
 					alert(data.msg);
 					$("#Alerta2").css("display","block");					
 				}else if(data.code == 3){
 					$("#Alerta1").css("display","none");
 					$("#Alerta2").css("display","none");
-					$("#Alerta3").css("display","none");							
+					$("#Alerta3").css("display","none");
+					$("#Alerta4").css("display","none");							
 					alert(data.msg);
 					$("#Alerta3").css("display","block");
 					$("#contElim2").css("display","block");
 					if(data.tipo == 1){
 						$('#inputTipoE2').val('Procesador');
+					}else if(data.tipo == 2){
+						$('#inputTipoE2').val('Placa Madre');
+					}else if(data.tipo == 3){
+						$('#inputTipoE2').val('Memoria');
+					}else if(data.tipo == 4){
+						$('#inputTipoE2').val('Pendrive');
+					}else if(data.tipo == 5){
+						$('#inputTipoE2').val('Tarjeta Grafica');
+					}else if(data.tipo == 6){
+						$('#inputTipoE2').val('Disco Duro');
 					}
 					$('#inputNombreE2').val(data.nombre);
 					$('#inputCodigoE2').val(data.codigo);
@@ -249,7 +262,7 @@ session_start();
 
 	function eliminarProducto2(){
 		alert('Eliminando Producto');
-		var url = 'eliminacion_php1.php';	
+		var url = 'php/eliminacion.php';	
 		console.log(url);
 		var data;
 		data = $('#inputCodigoE2').val();
@@ -263,8 +276,12 @@ session_start();
 			success:function(data){
 				console.log(data);
 				if(data.code == 4){
+					$("#Alerta1").css("display","none");
+					$("#Alerta2").css("display","none");
+					$("#Alerta3").css("display","none");
+					$("#Alerta4").css("display","none");
 					alert(data.msg);
-					//$("#row1").load(" #row1 ");
+					$("#row1").load(" #row1 > *");
 					$("#Alerta4").css("display","block");
 				}else{
 					alert("UHHHH");

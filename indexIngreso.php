@@ -219,7 +219,7 @@ function agregarProducto(){
 	var x = document.getElementById('myfile').files[0].name;
 	//var x = document.getElementById('myfile').value;
 	console.log(x);
-	var url= 'ingreso_php.php';
+	var url= 'php/ingreso.php';
 
 	var $form = $('#formProducto');
 	var data = {
