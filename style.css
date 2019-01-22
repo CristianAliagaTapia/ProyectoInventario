@@ -4,7 +4,10 @@ iframe{
 	border-style: none;	
 }
 img.card-img-top{
-	width: 75%; height: 75%; margin: auto;
+	width: 75%; 
+	height: 75%; 
+	margin: auto;
+	margin-top: 10px;
 }
 div.card-header{
 	background:#e91e63; color: #fff; width: 70%; height: 100%; margin: auto; border-radius:10px;

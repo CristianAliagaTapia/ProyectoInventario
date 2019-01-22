@@ -2,27 +2,7 @@
 session_start();
 include('conexion.php');
 
-$_SESSION['mensaje_error3'] = '';
-
 $nombre = NULL;
-
-$_SESSION['prod_tipo'] = NULL;
-$_SESSION['prod_nombre'] = NULL;	
-$_SESSION['prod_codigo'] = NULL;
-$_SESSION['prod_cantidad'] = NULL;
-$_SESSION['prod_descripcion'] = NULL;
-$_SESSION['prod_imagen'] = NULL;
-$_SESSION['prod_marca'] = NULL;
-$_SESSION['prod_socket'] = NULL;
-$_SESSION['prod_capacidad'] = NULL;
-$_SESSION['prod_rpm'] = NULL;
-$_SESSION['prod_tamano'] = NULL;
-$_SESSION['prod_plataforma'] = NULL;
-$_SESSION['prod_formato'] = NULL;
-$_SESSION['prod_modelo'] = NULL;
-$_SESSION['prod_cores'] = NULL;
-$_SESSION['prod_tipoMemoria'] = NULL;
-$_SESSION['prod_color'] = NULL;
 
 $nombre = $_POST['producto'];
 
@@ -114,7 +94,7 @@ function exito(){
 
 	echo   '<html>
 		<head>
-			<meta http-equiv="refresh" content="0;url=indexConsultar2.php">
+			<meta http-equiv="refresh" content="0;url=indexConsultar.php">
 		</head>
 	</html>
 	<body>
@@ -126,7 +106,7 @@ function exito2(){
 	$_SESSION['mensaje_error3'] = '<div class="alert alert-success"> Exito, producto encontrado. </div>';
 	echo   '<html>
 		<head>
-			<meta http-equiv="refresh" content="0;url=indexModificar2.php">
+			<meta http-equiv="refresh" content="0;url=indexModificar.php">
 		</head>
 	</html>
 	<body>
@@ -190,18 +170,39 @@ function agarrar($nombree){
 	$_SESSION['prod_color'] = $dato_color;
 }
 
+$errorMSG=' ';
+
 if(empty($nombre)){
-	error1();
+	$errorMSG = 'El campo de nombre se encuentra vacio, por favor rellenelo.';
+	echo json_encode(['code'=>1, 'msg'=>$errorMSG]);
 }else{
 	if(comprobar($nombre) == 0){
-		error2();
+		$errorMSG = 'El codigo del producto que desea eliminar no se encuentra en la base de datos.';
+		echo json_encode(['code'=>2, 'msg'=>$errorMSG]);
 	}else{
-		agarrar($nombre);
-		if($_SESSION['update'] == 1){
-		exito2();
-		}else{
-		exito();
+		$productos = "SELECT * FROM productos WHERE nombre = '$nombre'";
+		$prod = mysql_query($productos);
+		while ($dato = mysql_fetch_array($prod)) {
+			$dato_tipo = $dato['tipo'];
+				$dato_nombre = $dato['nombre'];		
+				$dato_codigo = $dato['codigo'];
+				$dato_cantidad = $dato['cantidad'];
+				$dato_descripcion = $dato['descripcion'];
+			$dato_imagen = $dato['imagen'];		
+				$dato_marca = $dato['marca'];
+				$dato_socket = $dato['socket'];
+				$dato_capacidad = $dato['capacidad'];
+				$dato_rpm = $dato['rpm'];
+				$dato_tamano = $dato['tamano'];
+				$dato_plataforma = $dato['plataforma'];
+				$dato_formato = $dato['formato'];
+				$dato_modelo = $dato['modelo'];
+				$dato_cores = $dato['cores'];
+				$dato_tipoMemoria= $dato['tipoMemoria'];
+				$dato_color = $dato['color'];
+			$errorMSG = 'Exito, producto encontrado.';
 		}
+		echo json_encode(['code'=>3, 'msg'=>$errorMSG, 'tipo'=>$dato_tipo, 'nombre'=>$dato_nombre, 'codigo'=>$dato_codigo, 'cantidad'=>$dato_cantidad, 'descripcion'=>$dato_descripcion, 'imagen'=>$dato_imagen, 'marca'=>$dato_marca, 'socket'=>$dato_socket, 'capacidad'=>$dato_capacidad, 'rpm'=>$dato_rpm, 'tamano'=>$dato_tamano, 'plataforma'=>$dato_plataforma, 'formato'=>$dato_formato, 'modelo'=>$dato_modelo, 'cores'=>$dato_cores, 'tipoMemoria'=>$dato_tipoMemoria, 'color'=>$dato_color]);
 	}
 }
 

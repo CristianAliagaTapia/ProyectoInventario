@@ -137,23 +137,63 @@ $_SESSION['verif'] = 0;
 		<!-- Contenido Ventana -->
 		<div class="row" id="row1">
 			<br>
-			<div class="container col-lg-8 p-4 mb-3 mt-3 bg-white">
-				<h2>Consultar Productos</h2>
-				<?= $_SESSION['mensaje_error3'] ?>		
-				<div class="alert alert-warning">
-					<strong>Atencion!</strong> Debe de proveer un nombre para iniciar una busqueda.
-				</div>		
-				<form name="formC" method="POST" action="consultar.php">
+			<div class="container col-lg-8 p-4 mb-3 mt-3 bg-white" id="contenedorConsulta1" style="display: block;">
+				<h2>Consultar Productos</h2>		
+				
+				<div class="alert alert-danger" id="Alerta1" style="display: none;"> El campo de nombre se encuentra vacio, por favor rellenelo. </div>
+				<div class="alert alert-danger" id="Alerta2" style="display: none;"> El codigo del producto que desea eliminar no se encuentra en la base de datos. </div>
+
+				<form name="formC" id="formConsultar" onsubmit="return consultarProducto()" style="display: block;">
+					<div class="alert alert-warning" style="display: block;" id="alertaAtencion">
+						<strong>Atencion!</strong> Debe de proveer un nombre para iniciar una busqueda.
+					</div>	
 					<div class="form-group">
 						<label for="nombre">Nombre:</label>
 						<div class="input-group">
-			                <input type="text" class="form-control typeahead border-primary" name="producto" id="producto" placeholder="Ingresa el nombre de un producto..." data-provide="typeahead" autocomplete="on">
+			                <input type="text" class="form-control typeahead border-primary" name="producto" id="producto" placeholder="Ingresa el nombre de un producto..." data-provide="typeahead" autocomplete="off">
 						</div>
 					</div>	
 					<button type="submit" class="btn-danger btn-block">Consultar</button>			
 				</form>
 			</div>
 		</div>
+
+		<!-- Contenido Ventana -->
+		<div class="row" id="row1">
+			<div class="container col-lg-8 p-4 mb-4 mt-3 bg-white" id="contenedorConsulta2" style="display: none;">
+				<div class="alert alert-success" id="Alerta3" style="display: none;"> Exito, producto encontrado. </div>
+				<h2 >Datos del Producto</h2>
+			  	<div class="container col-sm-6 shadow p-4 mb-4 bg-white">
+				  	<div class="card">
+				  		<img class="card-img-top" src="imagenes/" id="contenedorImagen"alt="Card Image" style="margin-top: 10px;">
+				  		<div class="card-header">
+				  			<h1 id="contenidoTipo">  </h1>
+				  		</div>
+				  		<div class="card-body"> 
+				  			<p class="card-text" id="contenedorNombre" style="display: none;"><strong> Nombre </strong> <i id="contenidoNombre"></i></p>
+				  			<p class="card-text" id="contenedorCodigo" style="display: none;"><strong> Codigo </strong><i id="contenidoCodigo"></i> </p>
+				  			<p class="card-text" id="contenedorMarca" style="display: none;"><strong> Marca </strong><i id="contenidoMarca"></i> </p>
+				  			<p class="card-text" id="contenedorCores" style="display: none;"><strong> Cores </strong><i id="contenidoCores"></i> </p>
+				  			<p class="card-text" id="contenedorSocket" style="display: none;"><strong> Socket </strong><i id="contenidoSocket"></i> </p>
+				  			<p class="card-text" id="contenedorCapacidad" style="display: none;"><strong> Capacidad </strong><i id="contenidoCapacidad"></i> </p>
+				  			<p class="card-text" id="contenedorRPM" style="display: none;"><strong> RPM </strong> <i id="contenidoRPM"></i></p>				  			
+				  			<p class="card-text" id="contenedorTamano" style="display: none;"><strong> Tamaño </strong><i id="contenidoTamano"></i> </p>
+				  			<p class="card-text" id="contenedorPlataforma" style="display: none;"><strong> Plataforma </strong><i id="contenidoPlataforma"></i> </p>	
+				  			<p class="card-text" id="contenedorFormato" style="display: none;"><strong> Formato </strong> <i id="contenidoFormato"></i></p>
+				  			<p class="card-text" id="contenedorModelo" style="display: none;"><strong> Modelo </strong> <i id="contenidoModelo"></i></p>						  					  			
+				  			<p class="card-text" id="contenedorTipoMemoria" style="display: none;"><strong> Tipo de Memoria </strong> <i id="contenidoTipoMemoria"></i></p>
+				  			<p class="card-text" id="contenedorColor" style="display: none;"><strong> Color </strong> <i id="contenidoColor"></i></p>	
+				  			<p class="card-text" id="contenedorCantidad" style="display: none;"><strong> Cantidad </strong> <i id="contenidoCantidad"></i> </p>
+				  			<p class="card-text" id="contenedorDescripcion" style="display: none;"><strong> Descripcion </strong><i id="contenidoDescripcion"></i> </p>
+				  		</div>
+				  	</div>
+			  	</div>
+			  	<br>		  		
+
+			  	<a href="indexConsultarP.php" class="btn btn-info" role="button"> Consultar Nuevamente</a>
+			</div>
+		</div>
+
 
 		<div id="notif">
 			<div class="row align-items-center" >
@@ -212,8 +252,137 @@ $_SESSION['verif'] = 0;
 			Copyright © 2019  |  All rights reserved to Cristian 
 		</div>
 	</footer>
-<?
-unset($_SESSION['mensaje_error3']);
-?>
+<script type="text/javascript">
+	var mensaje= function(){
+		$("#alertaAtencion").css("display","none");
+	}
+	var alert0 = document.getElementById("alertaAtencion");
+	alert0.addEventListener("click", mensaje);
+
+	function consultarProducto(){
+		alert('Buscando Producto');
+		var url = 'php/consultar.php';
+		console.log(url);
+		var data;
+		data =$('#formConsultar').serialize();
+		console.log(data);
+		$.ajax({
+			type: 'POST',
+			url:url,
+			data: data,
+			dataType: "json",
+			success: function(data){
+				console.log(data);
+				if(data.code == 1){
+					$("#Alerta1").css("display","none");
+					$("#Alerta2").css("display","none");
+					$("#Alerta3").css("display","none");
+					$("#Alerta4").css("display","none");						
+					alert(data.msg);
+					$("#Alerta1").css("display","block");
+				}else if(data.code == 2){
+					$("#Alerta1").css("display","none");
+					$("#Alerta2").css("display","none");
+					$("#Alerta3").css("display","none");
+					$("#Alerta4").css("display","none");							
+					alert(data.msg);
+					$("#Alerta2").css("display","block");					
+				}else if(data.code == 3){
+					$("#Alerta1").css("display","none");
+					$("#Alerta2").css("display","none");
+					$("#Alerta3").css("display","none");
+					$("#Alerta4").css("display","none");							
+					alert(data.msg);
+					$("#Alerta3").css("display","block");
+					if(data.nombre != ''){
+						$("#contenedorNombre").css("display", "block");
+						document.getElementById('contenidoNombre').innerHTML=data.nombre;
+					}
+					if(data.codigo != ''){
+						$("#contenedorCodigo").css("display","block");
+						document.getElementById('contenidoCodigo').innerHTML=data.codigo;
+					} 
+					if(data.marca != ''){
+						$("#contenedorMarca").css("display", "block");
+						document.getElementById('contenidoMarca').innerHTML=data.marca;
+					}
+					if(data.cores != ''){
+						$("#contenedorCores").css("display","block");
+						document.getElementById('contenidoCores').innerHTML=data.cores;
+					}
+					if(data.socket != ''){
+						$("#contenedorSocket").css("display","block");
+						document.getElementById('contenidoSocket').innerHTML=data.socket;
+					}
+					if(data.capacidad != ''){
+						$("#contenedorCapacidad").css("display","block");
+						document.getElementById('contenidoCapacidad').innerHTML=data.capacidad;
+					}
+					if(data.rpm != ''){
+						$("#contenedorRPM").css("display","block");
+						document.getElementById('contenidoRPM').innerHTML=data.rpm;
+					}
+					if(data.tamano != ''){
+						$("#contenedorTamano").css("display","block");
+						document.getElementById('contenidoTamano').innerHTML=data.tamano;
+					}
+					if(data.plataforma != ''){
+						$("#contenedorPlataforma").css("display","block");
+						document.getElementById('contenidoPlataforma').innerHTML=data.plataforma;
+					}
+					if(data.formato != ''){
+						$("#contenedorFormato").css("display","block");
+						document.getElementById('contenidoFormato').innerHTML=data.formato;
+					}
+					if(data.modelo != ''){
+						$("#contenedorModelo").css("display","block");
+						document.getElementById('contenidoModelo').innerHTML=data.modelo;
+					}
+					if(data.tipoMemoria != ''){
+						$("#contenedorTipoMemoria").css("display","block");
+						document.getElementById('contenidoTipoMemoria').innerHTML=data.tipoMemoria;
+					}
+					if(data.color != ''){
+						$("#contenedorColor").css("display","block");
+						document.getElementById('contenidoColor').innerHTML=data.color;
+					}
+					if(data.cantidad != ''){
+						$("#contenedorCantidad").css("display","block");
+						document.getElementById('contenidoCantidad').innerHTML=data.cantidad;
+					}
+					if(data.descripcion != ''){
+						$("#contenedorDescripcion").css("display","block");
+						document.getElementById('contenidoDescripcion').innerHTML=data.descripcion;
+					}
+					if(data.tipo == 1){
+						document.getElementById('contenidoTipo').innerHTML="Procesador";
+					}else if(data.tipo == 2){
+						document.getElementById('contenidoTipo').innerHTML="Placa Madre";
+					}else if(data.tipo == 3){
+						document.getElementById('contenidoTipo').innerHTML="Memoria";
+					}else if(data.tipo == 4){
+						document.getElementById('contenidoTipo').innerHTML="Pendrive";
+					}else if(data.tipo == 5){
+						document.getElementById('contenidoTipo').innerHTML="Tarjeta GRafica";
+					}else if(data.tipo == 6){
+						document.getElementById('contenidoTipo').innerHTML="Disco Duro";
+					}	
+
+					if(data.imagen != ''){
+						data.imagen = "imagenes/" + data.imagen;
+						$("#contenedorImagen").attr("src",data.imagen);
+					}			
+					$('#contenedorConsulta1').css("display","none");
+					$('#contenedorConsulta2').css("display","block");									
+				}else{
+					alert('UHHHHHH');
+				}			
+			}		
+
+		});
+		return false;
+	};
+
+</script>
 </body>
 </html>
