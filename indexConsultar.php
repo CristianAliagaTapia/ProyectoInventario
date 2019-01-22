@@ -40,7 +40,7 @@ $_SESSION['update'] = 0;
   				source: function(query,result)
   				{
   					$.ajax({
-  						url:"search.php",
+  						url:"php/search.php",
   						method:"POST",
   						data:{query:query},
   						dataType:"json",
@@ -110,8 +110,6 @@ $_SESSION['update'] = 0;
 	</header>
 
 	<main>
-
-
 
 		<!-- Contenido Ventana -->
 		<div class="row" id="row1">
@@ -218,138 +216,138 @@ $_SESSION['update'] = 0;
 			Copyright © 2019  |  All rights reserved to Cristian 
 		</div>
 	</footer>
-<script type="text/javascript">
-	var mensaje= function(){
-		$("#alertaAtencion").css("display","none");
-	}
-	var alert0 = document.getElementById("alertaAtencion");
-	alert0.addEventListener("click", mensaje);
 
-	function consultarProducto(){
-		alert('Buscando Producto');
-		var url = 'php/consultar.php';
-		console.log(url);
-		var data;
-		data =$('#formConsultar').serialize();
-		console.log(data);
-		$.ajax({
-			type: 'POST',
-			url:url,
-			data: data,
-			dataType: "json",
-			success: function(data){
-				console.log(data);
-				if(data.code == 1){
-					$("#Alerta1").css("display","none");
-					$("#Alerta2").css("display","none");
-					$("#Alerta3").css("display","none");
-					$("#Alerta4").css("display","none");						
-					alert(data.msg);
-					$("#Alerta1").css("display","block");
-				}else if(data.code == 2){
-					$("#Alerta1").css("display","none");
-					$("#Alerta2").css("display","none");
-					$("#Alerta3").css("display","none");
-					$("#Alerta4").css("display","none");							
-					alert(data.msg);
-					$("#Alerta2").css("display","block");					
-				}else if(data.code == 3){
-					$("#Alerta1").css("display","none");
-					$("#Alerta2").css("display","none");
-					$("#Alerta3").css("display","none");
-					$("#Alerta4").css("display","none");							
-					alert(data.msg);
-					$("#Alerta3").css("display","block");
-					if(data.nombre != ''){
-						$("#contenedorNombre").css("display", "block");
-						document.getElementById('contenidoNombre').innerHTML=data.nombre;
-					}
-					if(data.codigo != ''){
-						$("#contenedorCodigo").css("display","block");
-						document.getElementById('contenidoCodigo').innerHTML=data.codigo;
-					} 
-					if(data.marca != ''){
-						$("#contenedorMarca").css("display", "block");
-						document.getElementById('contenidoMarca').innerHTML=data.marca;
-					}
-					if(data.cores != ''){
-						$("#contenedorCores").css("display","block");
-						document.getElementById('contenidoCores').innerHTML=data.cores;
-					}
-					if(data.socket != ''){
-						$("#contenedorSocket").css("display","block");
-						document.getElementById('contenidoSocket').innerHTML=data.socket;
-					}
-					if(data.capacidad != ''){
-						$("#contenedorCapacidad").css("display","block");
-						document.getElementById('contenidoCapacidad').innerHTML=data.capacidad;
-					}
-					if(data.rpm != ''){
-						$("#contenedorRPM").css("display","block");
-						document.getElementById('contenidoRPM').innerHTML=data.rpm;
-					}
-					if(data.tamano != ''){
-						$("#contenedorTamano").css("display","block");
-						document.getElementById('contenidoTamano').innerHTML=data.tamano;
-					}
-					if(data.plataforma != ''){
-						$("#contenedorPlataforma").css("display","block");
-						document.getElementById('contenidoPlataforma').innerHTML=data.plataforma;
-					}
-					if(data.formato != ''){
-						$("#contenedorFormato").css("display","block");
-						document.getElementById('contenidoFormato').innerHTML=data.formato;
-					}
-					if(data.modelo != ''){
-						$("#contenedorModelo").css("display","block");
-						document.getElementById('contenidoModelo').innerHTML=data.modelo;
-					}
-					if(data.tipoMemoria != ''){
-						$("#contenedorTipoMemoria").css("display","block");
-						document.getElementById('contenidoTipoMemoria').innerHTML=data.tipoMemoria;
-					}
-					if(data.color != ''){
-						$("#contenedorColor").css("display","block");
-						document.getElementById('contenidoColor').innerHTML=data.color;
-					}
-					if(data.cantidad != ''){
-						$("#contenedorCantidad").css("display","block");
-						document.getElementById('contenidoCantidad').innerHTML=data.cantidad;
-					}
-					if(data.descripcion != ''){
-						$("#contenedorDescripcion").css("display","block");
-						document.getElementById('contenidoDescripcion').innerHTML=data.descripcion;
-					}
-					if(data.tipo == 1){
-						document.getElementById('contenidoTipo').innerHTML="Procesador";
-					}else if(data.tipo == 2){
-						document.getElementById('contenidoTipo').innerHTML="Placa Madre";
-					}else if(data.tipo == 3){
-						document.getElementById('contenidoTipo').innerHTML="Memoria";
-					}else if(data.tipo == 4){
-						document.getElementById('contenidoTipo').innerHTML="Pendrive";
-					}else if(data.tipo == 5){
-						document.getElementById('contenidoTipo').innerHTML="Tarjeta GRafica";
-					}else if(data.tipo == 6){
-						document.getElementById('contenidoTipo').innerHTML="Disco Duro";
-					}	
+	<script type="text/javascript">
+		var mensaje= function(){
+			$("#alertaAtencion").css("display","none");
+		}
+		var alert0 = document.getElementById("alertaAtencion");
+		alert0.addEventListener("click", mensaje);
 
-					if(data.imagen != ''){
-						data.imagen = "imagenes/" + data.imagen;
-						$("#contenedorImagen").attr("src",data.imagen);
+		function consultarProducto(){
+			alert('Buscando Producto');
+			var url = 'php/consultar.php';
+			console.log(url);
+			var data;
+			data = $('#formConsultar').serialize();
+			console.log(data);
+			$.ajax({
+				type: 'POST',
+				url:url,
+				data: data,
+				dataType: "json",
+				success: function(data){
+					console.log(data);
+					if(data.code == 1){
+						$("#Alerta1").css("display","none");
+						$("#Alerta2").css("display","none");
+						$("#Alerta3").css("display","none");
+						$("#Alerta4").css("display","none");						
+						alert(data.msg);
+						$("#Alerta1").css("display","block");
+					}else if(data.code == 2){
+						$("#Alerta1").css("display","none");
+						$("#Alerta2").css("display","none");
+						$("#Alerta3").css("display","none");
+						$("#Alerta4").css("display","none");							
+						alert(data.msg);
+						$("#Alerta2").css("display","block");					
+					}else if(data.code == 3){
+						$("#Alerta1").css("display","none");
+						$("#Alerta2").css("display","none");
+						$("#Alerta3").css("display","none");
+						$("#Alerta4").css("display","none");							
+						alert(data.msg);
+						$("#Alerta3").css("display","block");
+						if(data.nombre != ''){
+							$("#contenedorNombre").css("display", "block");
+							document.getElementById('contenidoNombre').innerHTML=data.nombre;
+						}
+						if(data.codigo != ''){
+							$("#contenedorCodigo").css("display","block");
+							document.getElementById('contenidoCodigo').innerHTML=data.codigo;
+						} 
+						if(data.marca != ''){
+							$("#contenedorMarca").css("display", "block");
+							document.getElementById('contenidoMarca').innerHTML=data.marca;
+						}
+						if(data.cores != ''){
+							$("#contenedorCores").css("display","block");
+							document.getElementById('contenidoCores').innerHTML=data.cores;
+						}
+						if(data.socket != ''){
+							$("#contenedorSocket").css("display","block");
+							document.getElementById('contenidoSocket').innerHTML=data.socket;
+						}
+						if(data.capacidad != ''){
+							$("#contenedorCapacidad").css("display","block");
+							document.getElementById('contenidoCapacidad').innerHTML=data.capacidad;
+						}
+						if(data.rpm != ''){
+							$("#contenedorRPM").css("display","block");
+							document.getElementById('contenidoRPM').innerHTML=data.rpm;
+						}
+						if(data.tamano != ''){
+							$("#contenedorTamano").css("display","block");
+							document.getElementById('contenidoTamano').innerHTML=data.tamano;
+						}
+						if(data.plataforma != ''){
+							$("#contenedorPlataforma").css("display","block");
+							document.getElementById('contenidoPlataforma').innerHTML=data.plataforma;
+						}
+						if(data.formato != ''){
+							$("#contenedorFormato").css("display","block");
+							document.getElementById('contenidoFormato').innerHTML=data.formato;
+						}
+						if(data.modelo != ''){
+							$("#contenedorModelo").css("display","block");
+							document.getElementById('contenidoModelo').innerHTML=data.modelo;
+						}
+						if(data.tipoMemoria != ''){
+							$("#contenedorTipoMemoria").css("display","block");
+							document.getElementById('contenidoTipoMemoria').innerHTML=data.tipoMemoria;
+						}
+						if(data.color != ''){
+							$("#contenedorColor").css("display","block");
+							document.getElementById('contenidoColor').innerHTML=data.color;
+						}
+						if(data.cantidad != ''){
+							$("#contenedorCantidad").css("display","block");
+							document.getElementById('contenidoCantidad').innerHTML=data.cantidad;
+						}
+						if(data.descripcion != ''){
+							$("#contenedorDescripcion").css("display","block");
+							document.getElementById('contenidoDescripcion').innerHTML=data.descripcion;
+						}
+						if(data.tipo == 1){
+							document.getElementById('contenidoTipo').innerHTML="Procesador";
+						}else if(data.tipo == 2){
+							document.getElementById('contenidoTipo').innerHTML="Placa Madre";
+						}else if(data.tipo == 3){
+							document.getElementById('contenidoTipo').innerHTML="Memoria";
+						}else if(data.tipo == 4){
+							document.getElementById('contenidoTipo').innerHTML="Pendrive";
+						}else if(data.tipo == 5){
+							document.getElementById('contenidoTipo').innerHTML="Tarjeta GRafica";
+						}else if(data.tipo == 6){
+							document.getElementById('contenidoTipo').innerHTML="Disco Duro";
+						}	
+
+						if(data.imagen != ''){
+							data.imagen = "imagenes/" + data.imagen;
+							$("#contenedorImagen").attr("src",data.imagen);
+						}			
+						$('#contenedorConsulta1').css("display","none");
+						$('#contenedorConsulta2').css("display","block");									
+					}else{
+						alert('UHHHHHH');
 					}			
-					$('#contenedorConsulta1').css("display","none");
-					$('#contenedorConsulta2').css("display","block");									
-				}else{
-					alert('UHHHHHH');
-				}			
-			}		
+				}		
 
-		});
-		return false;
-	};
-
-</script>
+			});
+			return false;
+		};
+	</script>
 
 </body>
 </html>

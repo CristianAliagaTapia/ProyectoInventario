@@ -39,7 +39,7 @@ $_SESSION['verif'] = 0;
   				source: function(query,result)
   				{
   					$.ajax({
-  						url:"search.php",
+  						url:"php/search.php",
   						method:"POST",
   						data:{query:query},
   						dataType:"json",

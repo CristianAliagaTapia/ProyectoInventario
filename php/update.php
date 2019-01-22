@@ -1,7 +1,6 @@
 <?
 include('conexion.php');
 session_start();
-$_SESSION['mensaje_error'];
 
 $tipo = NULL;
 $nombre = NULL;
@@ -39,85 +38,75 @@ $modelo = $_POST['modelo'];
 $tipoMemoria = $_POST['tipoMemoria'];
 $color = $_POST ['color'];
 
-function error1(){
-	$_SESSION['mensaje_error3'] = '<div class="alert alert-danger"> No se ha efectuado la modificacion, debido a que hay campos vacios, por favor reintente. </div>';
-	echo   '<html>
-		<head>
-			<meta http-equiv="refresh" content="0;url=indexModificar.php">
-		</head>
-	</html>
-	<body>
-	</body>
-	';
-}
 
-
-function exito(){
-	$_SESSION['mensaje_error3'] = '<div class="alert alert-success"> Exito, producto modificado. </div>';
-	echo   '<html>
-		<head>
-			<meta http-equiv="refresh" content="0;url=indexModificar.php">
-		</head>
-	</html>
-	<body>
-	</body>
-	';		
-}
-
+$errorMSG=' ';
 $modItem = "UPDATE productos SET tipo='$tipo', nombre='$nombre', cantidad='$cantidad', descripcion='$descripcion', imagen='$imagen', marca='$marca', socket='$socket', capacidad='$capacidad', rpm='$rpm', tamano='$tamano', plataforma='$plataforma', formato='$formato', modelo='$modelo', cores='$cores', tipoMemoria='$tipoMemoria', color='$color' WHERE codigo='$codigo';";
 
 
 
 if (empty($nombre) or empty($codigo) or empty($marca) or empty($cantidad) or empty($descripcion) or empty($imagen)){
-	error1();
+	$errorMSG = 'No se ha efectuado la modificacion, debido a que hay campos vacios, por favor reintente.';
+	echo json_encode(['code'=>1, 'msg'=>$errorMSG]);
 }else{
 	switch ($tipo) {
 		case '1':
 			 if(empty($socket) or empty($cores)){
-			 	error1();
+				$errorMSG = 'No se ha efectuado la modificacion, debido a que hay campos vacios, por favor reintente.';
+				echo json_encode(['code'=>1, 'msg'=>$errorMSG]);
 			 }else{
 			 	mysql_query($modItem);
-				exito();				 		
+				$errorMSG = 'Exito, producto modificado.';
+				echo json_encode(['code'=>3, 'msg'=>$errorMSG]);				 		
 			 }
 			 break;
 		case '2':
 			if(empty($socket) or empty($plataforma) or empty($formato)){
-			 	error1();
+				$errorMSG = 'No se ha efectuado la modificacion, debido a que hay campos vacios, por favor reintente.';
+				echo json_encode(['code'=>1, 'msg'=>$errorMSG]);
 			}else{
 			 	mysql_query($modItem);
-				exito();				 		
+				$errorMSG = 'Exito, producto modificado.';
+				echo json_encode(['code'=>3, 'msg'=>$errorMSG]);				 		
 			 }
 			 break;
 		case '3':
 			if(empty($capacidad) or empty($tipoMemoria)){
-			 	error1();
+				$errorMSG = 'No se ha efectuado la modificacion, debido a que hay campos vacios, por favor reintente.';
+				echo json_encode(['code'=>1, 'msg'=>$errorMSG]);
 			}else{
 			 	mysql_query($modItem);
-				exito();				 		
+				$errorMSG = 'Exito, producto modificado.';
+				echo json_encode(['code'=>3, 'msg'=>$errorMSG]);				 		
 			 }
 			 break;
 		case '4':
 			if(empty($capacidad) or empty($color)){
-			 	error1();
+				$errorMSG = 'No se ha efectuado la modificacion, debido a que hay campos vacios, por favor reintente.';
+				echo json_encode(['code'=>1, 'msg'=>$errorMSG]);
 			}else{
 			 	mysql_query($modItem);
-				exito();				 		
+				$errorMSG = 'Exito, producto modificado.';
+				echo json_encode(['code'=>3, 'msg'=>$errorMSG]);					 		
 			 }
 			 break;
 		case '5':
 			if(empty($plataforma) or empty($modelo)){
-			 	error1();
+				$errorMSG = 'No se ha efectuado la modificacion, debido a que hay campos vacios, por favor reintente.';
+				echo json_encode(['code'=>1, 'msg'=>$errorMSG]);
 			}else{
 			 	mysql_query($modItem);
-				exito();				 		
+				$errorMSG = 'Exito, producto modificado.';
+				echo json_encode(['code'=>3, 'msg'=>$errorMSG]);				 		
 			 }
 			 break;
 		case '6':
 			if(empty($capacidad) or empty($rpm) or empty($tamano)){
-			 	error1();
+				$errorMSG = 'No se ha efectuado la modificacion, debido a que hay campos vacios, por favor reintente.';
+				echo json_encode(['code'=>1, 'msg'=>$errorMSG]);
 			}else{
 			 	mysql_query($modItem);
-				exito();				 		
+				$errorMSG = 'Exito, producto modificado.';
+				echo json_encode(['code'=>3, 'msg'=>$errorMSG]);				 		
 			 }
 			 break;						
 		default:
