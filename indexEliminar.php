@@ -94,24 +94,59 @@ session_start();
 			<div class="container col-lg-12 p-0">
 				<div class="alert alert-success text-center" > <strong><?= $_SESSION['Usuario'] ?></strong>, En este menu podras eliminar productos. </div>
 			</div>
-			<div class="container col-lg-8 p-4 mb-3 mt-3 bg-white">
-			  <h2>Eliminacion de productos</h2>
-			  <?= $_SESSION['mensaje_error2'] ?>
-		      <div class="alert alert-warning">
+			<div class="container col-lg-8 p-4 mb-3 mt-3 bg-white" id = "contElim1">
+			  <h2>Eliminacion de producto</h2>
+			 <div class="alert alert-danger" id="Alerta1" style="display: none;"> El campo de codigo se encuentra vacio, por favor rellenelo. </div>
+			 <div class="alert alert-danger" id="Alerta2" style="display: none;"> El codigo del producto que desea eliminar no se encuentra en la base de datos. </div>
+			 <div class="alert alert-success" id="Alerta3" style="display: none;"> Exito, producto encontrado. </div>
+			 <div class="alert alert-success" id="Alerta4" style="display: none;"> Exito, producto eliminado. </div>
+		      <div class="alert alert-warning" style="display: block;" id="alertaAtencion">
 			  	<strong>Atencion!</strong> Debe de proveer un codigo para iniciar una busqueda.
 				</div>				  
-			  <form name="formEL" method="POST" action="eliminacion.php">
+			  <form name="formEL" id="formEliminar1" onsubmit="return eliminarProducto1()">
 			    <div class="form-group">
 			      <label for="codigo">Codigo:</label>
 			      <div class="input-group">
 			     	 <input type="text" class="form-control" id="codigoProcesador" placeholder="Ingresa el codigo del producto " name="codigo">
 			 	  </div>
 			    </div>
-     			
 			    <br>
-			    <button type="submit" class="btn btn-danger btn-block">Buscar y Eliminar</button>
+			    <button type="submit" class="btn btn-danger btn-block">Buscar</button>     			
 			  </form>	
 
+			</div>
+			<div class="container col-lg-8 p-4 mb-3 mt-3 bg-white" id = "contElim2" style="display: none" onsubmit="return eliminarProducto2()">
+				<h2>Producto a eliminar</h2>
+				<form name="formEL2" id="formEliminar2">
+					<div class="form-group">
+						<label for="tipo">Tipo: </label>
+						<div class="input-group">
+							<input type="text" name="inputTipoE2" id="inputTipoE2" disabled>
+						</div>
+						<label for="nombre">Nombre: </label>
+						<div class="input-group">
+							<input type="text" name="inputNombreE2" id="inputNombreE2" disabled>
+						</div>
+						<label for="codigo">Codigo: </label>
+						<div class="input-group">
+							<input type="text" name="inputCodigoE2" id="inputCodigoE2" disabled>
+						</div>
+						<label for="cantidad">Cantidad: </label>
+						<div class="input-group">
+							<input type="number" name="inputCantidadE2" id="inputCantidadE2" disabled>
+						</div>
+						<label for="descripcion">Descripcion: </label>
+						<div class="input-group">
+							<input type="text" name="inputDescripcionE2" id="inputDescripcionE2" disabled>
+						</div>
+						<label for="marca">Marca: </label>
+						<div class="input-group">
+							<input type="text" name="inputMarcaE2" id="inputMarcaE2" disabled>
+						</div>																	
+					</div>
+			    <br>
+			    <button type="submit" class="btn btn-danger btn-block">Eliminar</button>
+				</form>
 			</div>
 		</div>
 	</main>
@@ -155,6 +190,90 @@ session_start();
 			Copyright © 2019  |  All rights reserved to Cristian 
 		</div>
 	</footer>
-	<?= $_SESSION['mensaje_error2'] = ''?>
+<script type="text/javascript">
+	var mensaje= function(){
+		console.log('veremos');
+		$("#alertaAtencion").css("display","none");
+	}
+	var alert0 = document.getElementById("alertaAtencion");
+	alert0.addEventListener("click", mensaje);
+
+	function eliminarProducto1(){
+		alert('Buscando Producto');
+		var url= 'eliminacion_php.php';
+		var data;
+		data = $('#formEliminar1').serialize();
+		console.log(data);
+		$.ajax({
+			type: 'POST',
+			url:url,
+			data: data,
+			dataType: "json",
+			success:function(data){
+				console.log(data);
+				if(data.code == 1){
+					$("#Alerta1").css("display","none");
+					$("#Alerta2").css("display","none");
+					$("#Alerta3").css("display","none");							
+					alert(data.msg);
+					$("#Alerta1").css("display","block");
+				}else if(data.code == 2){
+					$("#Alerta1").css("display","none");
+					$("#Alerta2").css("display","none");
+					$("#Alerta3").css("display","none");							
+					alert(data.msg);
+					$("#Alerta2").css("display","block");					
+				}else if(data.code == 3){
+					$("#Alerta1").css("display","none");
+					$("#Alerta2").css("display","none");
+					$("#Alerta3").css("display","none");							
+					alert(data.msg);
+					$("#Alerta3").css("display","block");
+					$("#contElim2").css("display","block");
+					if(data.tipo == 1){
+						$('#inputTipoE2').val('Procesador');
+					}
+					$('#inputNombreE2').val(data.nombre);
+					$('#inputCodigoE2').val(data.codigo);
+					$('#inputCantidadE2').val(data.cantidad);
+					$('#inputDescripcionE2').val(data.descripcion);
+					$('#inputMarcaE2').val(data.marca);
+
+				}else{
+					alert("UHHHH");
+				}
+			}
+		});
+		return false;
+	};
+
+	function eliminarProducto2(){
+		alert('Eliminando Producto');
+		var url = 'eliminacion_php1.php';	
+		console.log(url);
+		var data;
+		data = $('#inputCodigoE2').val();
+		data = 'codigo=' + data;
+		console.log(data);
+		$.ajax({
+			type: 'POST',
+			url:url,
+			data: data,
+			dataType: "json",
+			success:function(data){
+				console.log(data);
+				if(data.code == 4){
+					alert(data.msg);
+					//$("#row1").load(" #row1 ");
+					$("#Alerta4").css("display","block");
+				}else{
+					alert("UHHHH");
+				}
+			}
+		});
+	return false;
+	};
+
+</script>
 </body>
 </html>
